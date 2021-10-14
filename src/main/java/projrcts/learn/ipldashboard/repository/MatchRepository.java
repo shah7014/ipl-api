@@ -30,7 +30,7 @@ public interface MatchRepository extends CrudRepository<Match, Long> {
                                          @Param("endDate") LocalDate endDate);
 
     default List<Match> findLatestMatchesForTeam(String teamName, int count) {
-        Pageable pageable = PageRequest.of(1, count);
+        Pageable pageable = PageRequest.of(0, count);
         return findByTeam1OrTeam2OrderByDateDesc(teamName, teamName, pageable);
     }
 }
